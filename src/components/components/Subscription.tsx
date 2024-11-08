@@ -5,10 +5,12 @@ import { motion } from 'framer-motion'
 import { RainbowButton } from '@/components/ui/rainbow-button'
 import { Input } from '@/components/ui/input'
 
+// https://magicui.design/docs/components/confetti
+
 export default function Subscription() {
   return (
     <motion.div
-      className="z-50 flex flex-col gap-3"
+      className="z-50 flex flex-col items-center gap-3"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
