@@ -1,9 +1,11 @@
-import Header from '@/components/layout/Header'
+import Lamp from '@/components/ui/lamp'
+import FloatingDock from '@/components/magicui/FloatingDock'
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Lamp />
+      <FloatingDock/>
     </>
   )
 }
