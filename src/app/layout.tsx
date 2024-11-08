@@ -23,7 +23,8 @@ export default function RootLayout({ children }: Readonly<{
     <body className={clx('bg-zinc-50 dark:bg-zinc-950', lato.className)}>
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
+      themes={['dark']}
       enableSystem
     >
       {children}

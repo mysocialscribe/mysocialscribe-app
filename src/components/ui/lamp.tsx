@@ -7,19 +7,19 @@ import { SparklesCore } from './sparkles'
 export default function Lamp() {
   return (
     <LampContainer>
-      <motion.h1
-        initial={{ opacity: 0.5, y: 100 }}
+      <motion.img
+        src="logo-white.png"
+        alt="spacescribe logo"
+        className="pt-20"
+        width={400}
+        initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
           delay: 0.3,
           duration: 0.8,
           ease: 'easeInOut',
         }}
-        className="mt-20 bg-gradient-to-br from-neutral-300 to-neutral-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-      >
-        Plans That
-        <br /> Fit You Best
-      </motion.h1>
+      />
     </LampContainer>
   )
 }
@@ -34,7 +34,7 @@ export const LampContainer = ({
   return (
     <div
       className={cn(
-        'relative flex min-h-[800px] flex-col items-center justify-center overflow-hidden bg-zinc-50 dark:bg-zinc-950 w-full rounded-md z-0',
+        ' flex flex-col pt-[10rem] items-center justify-center overflow-hidden bg-zinc-50 dark:bg-zinc-950 w-full rounded-md z-0',
         className,
       )}
     >
