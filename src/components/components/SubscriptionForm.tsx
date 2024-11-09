@@ -38,7 +38,7 @@ export default function SubscriptionForm() {
 
       <RainbowButton
         className="px-4 text-sm text-black sm:px-6 sm:text-base"
-        lable="Subscribe"
+        lable={state.status === 'success' ? 'Subscribed' : 'Subscribe'}
       />
     </form>
   )

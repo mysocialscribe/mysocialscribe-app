@@ -15,8 +15,8 @@ export default function Lamp() {
       <motion.img
         src="logo-white.png"
         alt="spacescribe logo"
-        className="pt-28 mb-10 sm:-mb-10"
-        width={isMobile ? 250 : 400}
+        className="-mb-14 pt-28 sm:-mb-10"
+        width={isMobile ? 200 : 400}
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{

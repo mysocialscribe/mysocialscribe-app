@@ -4,6 +4,7 @@ import { z } from 'zod'
 
 import { sendEmail } from '@/utils/sendEmail'
 import { FormState } from '@/types/types'
+import { subscribeService } from '@/db/subscribe.service'
 
 const subscriptionSchema = z.object({
   email: z.string().email(),
@@ -23,6 +24,7 @@ export async function subscribeAction(prevState: FormState, formData: FormData) 
     }
 
     await sendEmail(email)
+    await subscribeService(email)
 
     return {
       message: 'Successfully subscribed!',
