@@ -1,13 +1,16 @@
 import React from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { cn } from '@/lib/utils'
 
 interface RainbowButtonProps {
   className?: string
-  children: React.ReactNode
+  lable?: string
 }
 
-export function RainbowButton({ children, className, ...props }: RainbowButtonProps) {
+export function RainbowButton({ lable, className, ...props }: RainbowButtonProps) {
+  const { pending } = useFormStatus()
+
   return (
     <button
       className={cn(
@@ -21,12 +24,13 @@ export function RainbowButton({ children, className, ...props }: RainbowButtonPr
 
         // dark mode colors
         'dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]',
-
         className
       )}
+      type="submit"
+      disabled={pending}
       {...props}
     >
-      {children}
+      {lable}
     </button>
   )
 }
