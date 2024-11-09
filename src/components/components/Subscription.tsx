@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input'
 export default function Subscription() {
   return (
     <motion.div
-      className="z-50 flex flex-col items-center gap-3"
+      className="z-[100] flex flex-col items-center gap-3"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
@@ -19,11 +19,13 @@ export default function Subscription() {
         ease: 'easeInOut',
       }}
     >
-      <p>Join Us and Know When We’re Live 🎉</p>
+      <p className="text-sm sm:text-base">Join Us and Know When We’re Live 🎉</p>
 
       <div className="z-50 flex items-center gap-3">
-        <Input className="h-11 w-80 rounded-xl border-zinc-100 py-2" />
-        <RainbowButton className="px-6 text-black">Subscribe</RainbowButton>
+        <Input className="h-11 rounded-xl border-zinc-100 py-2 sm:w-80" />
+        <RainbowButton className="px-4 text-sm text-black sm:px-6 sm:text-base">
+          Subscribe
+        </RainbowButton>
       </div>
     </motion.div>
   )

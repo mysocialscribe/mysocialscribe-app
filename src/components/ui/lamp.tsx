@@ -5,15 +5,18 @@ import { motion } from 'framer-motion'
 
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { LampContainer } from '@/components/components/LampContainer'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export default function Lamp() {
+  const { isMobile } = useIsMobile()
+
   return (
     <LampContainer>
       <motion.img
         src="logo-white.png"
         alt="spacescribe logo"
-        className="-mb-10 pt-28"
-        width={400}
+        className="pt-28 mb-10 sm:-mb-10"
+        width={isMobile ? 250 : 400}
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -31,6 +34,7 @@ export default function Lamp() {
           duration: 0.8,
           ease: 'easeInOut',
         }}
+        className="max-w-[18rem] text-sm font-light md:max-w-none"
       >
         <TextGenerateEffect words="A personalized assistant for transcribing, summarizing, and sharing key insights from Twitter Spaces." />
       </motion.h4>

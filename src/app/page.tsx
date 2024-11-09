@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Lamp />
-      <main className="container mx-auto flex flex-col justify-center pt-10">
+      <main className="container mx-auto pt-10">
         <Subscription />
       </main>
       <FloatingDock />
