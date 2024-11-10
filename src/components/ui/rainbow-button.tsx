@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormStatus } from 'react-dom'
 
 import { cn } from '@/lib/utils'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 interface RainbowButtonProps {
   className?: string
@@ -30,7 +31,7 @@ export function RainbowButton({ lable, className, ...props }: RainbowButtonProps
       disabled={pending}
       {...props}
     >
-      {lable}
+      {pending ? <AiOutlineLoading3Quarters className="duration-800 animate-spin" /> : lable}
     </button>
   )
 }
