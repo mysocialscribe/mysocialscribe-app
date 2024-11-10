@@ -13,10 +13,10 @@ export default function Lamp() {
   return (
     <LampContainer>
       <motion.img
-        src="logo-white.png"
-        alt="spacescribe logo"
-        className="-mb-14 pt-28 sm:-mb-10"
-        width={isMobile ? 200 : 400}
+        src="icon.png"
+        alt="scarpio logo"
+        className="-mb-12 pt-20 sm:-mb-10"
+        width={isMobile ? 200 : 450}
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{

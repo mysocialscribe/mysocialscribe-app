@@ -2,13 +2,15 @@ import nodemailer from 'nodemailer'
 import fs from 'fs'
 import path from 'path'
 
+const EMAIL: string = 'scarpio.info@gmail.com'
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
   port: 587,
   secure: false,
   auth: {
-    user: 'spacescribe.info@gmail.com',
+    user: EMAIL,
     pass: process.env.PASS,
   },
 })
@@ -30,9 +32,9 @@ export const sendEmail = async (to: string): Promise<void> => {
 
     const htmlContent = await fs.promises.readFile(templatePath, 'utf-8')
     const mailOptions = {
-      from: 'spacescribe.info@gmail.com',
+      from: EMAIL,
       to,
-      subject: 'Welcome to SpaceScribe!',
+      subject: 'Welcome to Scarpio!',
       html: htmlContent,
     }
 
