@@ -13,7 +13,7 @@ export default function Lamp() {
   return (
     <LampContainer>
       <motion.img
-        src="icon.png"
+        src="logo-white.png"
         alt="scarpio logo"
         className="-mb-12 pt-20 sm:-mb-10"
         width={isMobile ? 200 : 450}
