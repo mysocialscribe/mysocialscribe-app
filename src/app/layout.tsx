@@ -21,9 +21,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
-  if (!GTM_ID) console.warn('GTM_ID is not defined')
-
   return (
     <html
       lang="en"

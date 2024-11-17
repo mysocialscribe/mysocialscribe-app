@@ -12,8 +12,7 @@ export default function Lamp() {
       <motion.img
         src="logo-white.png"
         alt="mysocialscribe logo"
-        className="-mb-12 pt-20 sm:-mb-10"
-        width="350"
+        className="w-[200px] pt-28 sm:-mb-10 sm:w-[400px]"
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -31,7 +30,7 @@ export default function Lamp() {
           duration: 0.8,
           ease: 'easeInOut',
         }}
-        className="max-w-[18rem] text-sm font-light md:max-w-none"
+        className="max-w-[18rem] pt-12 text-sm font-light md:max-w-none"
       >
         <TextGenerateEffect words="A personalized assistant for transcribing, summarizing, and sharing key insights from Twitter Spaces." />
       </motion.h4>
