@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 import fs from 'fs'
 import path from 'path'
 
-const EMAIL: string = 'scarpio.info@gmail.com'
+const EMAIL: string = 'mysocialscribe.info@gmail.com'
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -34,7 +34,7 @@ export const sendEmail = async (to: string): Promise<void> => {
     const mailOptions = {
       from: EMAIL,
       to,
-      subject: 'Welcome to Scarpio!',
+      subject: 'Welcome to mySocialScribe!',
       html: htmlContent,
     }
 

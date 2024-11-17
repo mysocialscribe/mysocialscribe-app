@@ -5,18 +5,15 @@ import { motion } from 'framer-motion'
 
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { LampContainer } from '@/components/components/LampContainer'
-import { useIsMobile } from '@/hooks/useIsMobile'
 
 export default function Lamp() {
-  const { isMobile } = useIsMobile()
-
   return (
     <LampContainer>
       <motion.img
         src="logo-white.png"
-        alt="scarpio logo"
+        alt="mysocialscribe logo"
         className="-mb-12 pt-20 sm:-mb-10"
-        width={isMobile ? 200 : 450}
+        width="350"
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{

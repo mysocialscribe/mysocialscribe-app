@@ -23,8 +23,7 @@ export async function subscribeAction(prevState: FormState, formData: FormData) 
       }
     }
 
-    await sendEmail(email)
-    await subscribeService(email)
+    await Promise.all([sendEmail(email), subscribeService(email)])
 
     return {
       message: 'Successfully subscribed!',
