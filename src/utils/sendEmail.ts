@@ -25,9 +25,7 @@ export const sendEmail = async (to: string): Promise<void> => {
     const projectRoot = process.cwd()
     const templatePath = path.join(
       projectRoot,
-      'src',
-      'app',
-      '_templates',
+      'public',
       'subscriptionEmailTemplate.html'
     )
 
