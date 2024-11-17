@@ -4,6 +4,7 @@ import { Lato } from 'next/font/google'
 
 import { ThemeProvider } from '@/app/providers'
 import './globals.css'
+import GoogleAnalytics from '@/components/googleAnalytics/GoogleAnalytics'
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -42,6 +43,7 @@ export default function RootLayout({
           enableSystem
         >
           {children}
+          <GoogleAnalytics />
         </ThemeProvider>
       </body>
     </html>
