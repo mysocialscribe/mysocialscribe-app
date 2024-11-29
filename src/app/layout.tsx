@@ -3,13 +3,14 @@ import { Lato } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 import ThemeProvider from '@/app/providers'
-import HeadMetadata from '@/components/components/HeadMetadata'
-import { siteConfig } from '@/config/site'
-import './globals.css'
-import Header from '@/components/layout/Header'
-import { cn } from '@/lib/utils'
+import HeadMetadata from '@/components/components/head-metadata'
 import DotPattern from '@/components/magic-ui/DotPattern'
-import Footer from '@/components/layout/Footer'
+import Footer from '@/components/layout/footer'
+import Header from '@/components/layout/header'
+
+import './globals.css'
+import { cn } from '@/lib/utils'
+import { siteConfig } from '@/config/site'
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],

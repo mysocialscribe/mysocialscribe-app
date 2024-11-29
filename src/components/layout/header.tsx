@@ -1,14 +1,14 @@
 import Image from 'next/image'
 
-import { ModeToggle } from '@/components/components/ModeToggle'
-import { Button } from '@/components/ui/button'
-import { CiLogin } from 'react-icons/ci'
+import { ModeToggle } from '@/components/components/mode-toggle'
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
+import Link from 'next/link'
 
 const Header = () => {
   return (
     <>
       <header className="relative pb-4 pt-8">
-        <div className="mx-auto flex max-w-2xl items-center justify-between">
+        <div className="container mx-auto flex max-w-3xl items-center justify-between">
           <Image
             src="/icon.png"
             alt="mysocialscribe logo"
@@ -20,13 +20,13 @@ const Header = () => {
           <div className="flex items-center gap-2">
             <ModeToggle />
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-xl"
+            <HoverBorderGradient
+              containerClassName="rounded-xl"
+              as="button"
+              className="flex items-center space-x-2 bg-white text-black dark:bg-black dark:text-white"
             >
-              <CiLogin className="h-[1.5rem] w-[1.5rem] scale-125" />
-            </Button>
+              <Link href="/">Login</Link>
+            </HoverBorderGradient>
           </div>
         </div>
       </header>
