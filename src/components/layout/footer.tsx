@@ -4,7 +4,7 @@ import { LINKS } from '@/constants/LINKS'
 const Footer = () => {
   return (
     <footer className="container mx-auto flex w-full max-w-3xl items-center justify-between py-6">
-      <div className="flex gap-2">
+      <div className="flex gap-2 text-sm">
         <p>© {new Date().getFullYear()} mysocialscribe</p>
         <span>-</span>
         <p>v{VERSION}</p>
@@ -16,6 +16,7 @@ const Footer = () => {
             key={link.href}
             href={link.href}
             target="_blank"
+            className="transition-all hover:scale-110"
           >
             {link.icon}
           </a>

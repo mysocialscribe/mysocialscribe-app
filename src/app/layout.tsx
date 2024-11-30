@@ -4,13 +4,14 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 
 import ThemeProvider from '@/app/providers'
 import HeadMetadata from '@/components/components/head-metadata'
-import DotPattern from '@/components/magic-ui/DotPattern'
+import DotPattern from '@/components/ui/dot-pattern'
 import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
 
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
+import { Spotlight } from '@/components/ui/spotlight'
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -42,6 +43,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/*<Spotlight className="left-1/4 -translate-x-1/2" />*/}
           <Header />
           {children}
           <Footer />
