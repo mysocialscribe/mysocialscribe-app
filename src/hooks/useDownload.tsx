@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-type TUseDownload = {
+type UseDownloadType = {
   downloading: boolean
   error: string | null
   downloadTwitterSpaces: (url: string) => Promise<void>
 }
 
-const useDownload = (): TUseDownload => {
+const useDownload = (): UseDownloadType => {
   const [downloading, setDownloading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 

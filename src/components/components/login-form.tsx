@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { DialogTitle } from '@/components/ui/dialog'
 import { login } from '@/actions/handle_auth_action'
+import { useLoginDialog } from '@/providers/login-dialog-provider'
 
 type LoginFormProps = {
   onSignupClick: () => void
@@ -19,6 +20,7 @@ type LoginFormProps = {
 
 const LoginForm: FC<LoginFormProps> = ({ onSignupClick }) => {
   const [serverError, setServerError] = useState<string | null>(null)
+  const { closeDialog } = useLoginDialog()
 
   const {
     control,
@@ -39,6 +41,8 @@ const LoginForm: FC<LoginFormProps> = ({ onSignupClick }) => {
     if (result && !result.success) {
       setServerError(result.error || 'Login failed')
     }
+
+    if (result.success) closeDialog()
   }
 
   return (

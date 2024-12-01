@@ -6,12 +6,13 @@ import { CardStackComponent } from '@/components/components/card-stack-component
 
 const Home = async () => {
   const supabase = await createClient()
-  const { data: user } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user
 
   return (
     <main className="flex h-56 flex-1 flex-col items-center justify-center gap-8">
       <Title />
-      <Download isAuthenticated={!!user} />
+      <Download user={user} />
       <CardStackComponent />
     </main>
   )
