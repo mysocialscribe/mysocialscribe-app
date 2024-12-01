@@ -68,6 +68,11 @@ export default {
       },
       tailwindcssAnimate,
     ],
+    variants: {
+      extend: {
+        backdropBlur: ['responsive'],
+      },
+    },
   },
 } satisfies Config
 

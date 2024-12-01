@@ -11,7 +11,6 @@ import Header from '@/components/layout/header'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
-import { Spotlight } from '@/components/ui/spotlight'
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -43,7 +42,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/*<Spotlight className="left-1/4 -translate-x-1/2" />*/}
           <Header />
           {children}
           <Footer />
