@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { BsSun } from 'react-icons/bs'
 import { RxMoon } from 'react-icons/rx'
 
-export function ModeToggle() {
+const ModeToggle = () => {
   const { theme, setTheme } = useTheme()
 
   const handleThemeToggle = () => {
@@ -28,3 +28,5 @@ export function ModeToggle() {
     </Button>
   )
 }
+
+export default ModeToggle

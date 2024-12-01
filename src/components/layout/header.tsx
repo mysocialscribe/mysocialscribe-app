@@ -1,6 +1,6 @@
-import { ModeToggle } from '@/components/components/mode-toggle'
+import ModeToggle from '@/components/components/mode-toggle'
 import Logo from '@/components/components/logo'
-import LoginDialog from '@/components/components/login-dialog'
+import UserMenu from '@/components/components/user-menu'
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
 
           <div className="flex items-center gap-2">
             <ModeToggle />
-            <LoginDialog />
+            <UserMenu />
           </div>
         </div>
       </header>

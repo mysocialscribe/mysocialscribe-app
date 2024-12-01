@@ -1,17 +1,16 @@
-import { useState, FC } from 'react'
-import { z } from 'zod'
-import { useForm, Controller } from 'react-hook-form'
+import { FC, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Check, Eye, EyeOff, X } from 'lucide-react'
 
 import { Input } from '@/components/ui/input'
 import { signupSchema } from '@/types/schema/auth.schema'
+import { signup } from '@/actions/handle_auth_action'
+import { SignupFormData } from '@/types/AuthType'
 
 import { Button } from '@/components/ui/button'
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { DialogTitle } from '@/components/ui/dialog'
-
-type SignupFormData = z.infer<typeof signupSchema>
 
 type SignupFormProps = {
   onLoginClick: () => void
@@ -20,7 +19,6 @@ type SignupFormProps = {
 const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
   const {
     control,
-    handleSubmit,
     watch,
     formState: { errors, isValid },
   } = useForm<SignupFormData>({
@@ -63,13 +61,6 @@ const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
   const [isVisible, setIsVisible] = useState(false)
   const toggleVisibility = () => setIsVisible((prev) => !prev)
 
-  // Handle form submission
-  const onSubmit = async (data: SignupFormData) => {
-    // Implement your server action or API call here
-    console.log('Form submitted', data)
-    // You can add your signup logic here
-  }
-
   return (
     <>
       <DialogTitle>
@@ -80,10 +71,7 @@ const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
       </DialogTitle>
 
       <CardContent>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="grid gap-4"
-        >
+        <form className="grid gap-4">
           {/* Email Input */}
           <div className="group relative">
             <label
@@ -171,7 +159,7 @@ const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
               <div
                 className={`h-full ${getStrengthColor(strengthScore)} transition-all duration-500 ease-out`}
                 style={{ width: `${(strengthScore / 4) * 100}%` }}
-              ></div>
+              />
             </div>
 
             {/* Password requirements list */}
@@ -213,12 +201,13 @@ const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
             type="submit"
             className="w-full"
             disabled={!isValid || strengthScore < 4}
+            formAction={signup}
           >
             Sign up
           </Button>
         </form>
 
-        {/* Switch to login form link */}
+        {/* Switch to log in form link */}
         <div className="mt-4 text-center text-sm">
           Already have an account?{' '}
           <span

@@ -1,40 +1,32 @@
 'use client'
 
-import React from 'react'
+import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { FaGoogle } from 'react-icons/fa'
 import { LuGithub } from 'react-icons/lu'
 
 import { loginSchema } from '@/types/schema/auth.schema'
+import { LoginFormData } from '@/types/AuthType'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { DialogTitle } from '@/components/ui/dialog'
-
-type LoginFormData = z.infer<typeof loginSchema>
+import { login } from '@/actions/handle_auth_action'
 
 type LoginFormProps = {
   onSignupClick: () => void
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSignupClick }) => {
+const LoginForm: FC<LoginFormProps> = ({ onSignupClick }) => {
   const {
     control,
-    handleSubmit,
     formState: { errors, isValid },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     mode: 'onChange',
   })
-
-  // Handle form submission
-  const onSubmit = async (data: LoginFormData) => {
-    // Implement your login logic here
-    console.log('Login submitted', data)
-  }
 
   return (
     <>
@@ -46,10 +38,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSignupClick }) => {
       </DialogTitle>
 
       <CardContent>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-4"
-        >
+        <form className="space-y-4">
           {/* Email Input */}
           <div className="group relative">
             <label
@@ -106,6 +95,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSignupClick }) => {
             type="submit"
             className="w-full"
             disabled={!isValid}
+            formAction={login}
           >
             Login
           </Button>
