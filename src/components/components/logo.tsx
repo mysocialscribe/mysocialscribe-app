@@ -13,7 +13,7 @@ const Logo = () => {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
+  if (!mounted) return <div />
 
   const logoSrc = theme === 'dark' ? '/icon.png' : '/icon-black.png'
 

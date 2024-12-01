@@ -1,13 +1,16 @@
 'use client'
 
+import { LoaderCircle } from 'lucide-react'
+
 import useDownload from '@/hooks/useDownload'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { LoaderCircle } from 'lucide-react'
 
-const Download = () => {
+const Download = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
   const { downloading, downloadTwitterSpaces, error } = useDownload()
+
+  console.log('isAuthenticated', isAuthenticated)
 
   return (
     <div className="z-50 flex w-full max-w-md flex-col gap-1 px-4 pb-10 md:px-0">
