@@ -1,7 +1,6 @@
 import { ModeToggle } from '@/components/components/mode-toggle'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
-import Link from 'next/link'
 import Logo from '@/components/components/logo'
+import LoginDialog from '@/components/components/login-dialog'
 
 const Header = () => {
   return (
@@ -12,14 +11,7 @@ const Header = () => {
 
           <div className="flex items-center gap-2">
             <ModeToggle />
-
-            <HoverBorderGradient
-              containerClassName="rounded-xl"
-              as="button"
-              className="flex items-center bg-white px-3 text-black dark:bg-black dark:text-white md:px-4"
-            >
-              <Link href="/">Login</Link>
-            </HoverBorderGradient>
+            <LoginDialog />
           </div>
         </div>
       </header>
