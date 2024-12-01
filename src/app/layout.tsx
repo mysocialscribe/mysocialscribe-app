@@ -11,7 +11,6 @@ import Header from '@/components/layout/header'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
-import { LoginDialogProvider } from '@/providers/login-dialog-provider'
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -43,11 +42,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LoginDialogProvider>
-            <Header />
-            {children}
-            <Footer />
-          </LoginDialogProvider>
+          <Header />
+          {children}
+          <Footer />
 
           <DotPattern
             className={cn(
