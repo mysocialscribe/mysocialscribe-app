@@ -24,11 +24,16 @@ export default {
       animation: {
         rainbow: 'rainbow var(--speed, 2s) infinite linear',
         spotlight: 'spotlight 2s ease .75s 1 forwards',
+        'animate-spin': 'spin 1s linear infinite',
       },
       keyframes: {
         rainbow: {
           '0%': { 'background-position': '0%' },
           '100%': { 'background-position': '200%' },
+        },
+        spin: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
         },
       },
     },
