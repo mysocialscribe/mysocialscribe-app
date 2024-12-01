@@ -1,15 +1,15 @@
-import Title from '@/components/components/title'
-import Download from '@/components/components/download'
-import { CardStackDemo } from '@/components/components/card-stack-demo'
+import Lamp from '@/components/ui/lamp'
+import FloatingDock from '@/components/components/FloatingDock'
+import Subscription from '@/components/components/Subscription'
 
-const Home = () => {
+export default function Home() {
   return (
-    <main className="flex h-56 flex-1 flex-col items-center justify-center gap-8">
-      <Title />
-      <Download />
-      <CardStackDemo />
-    </main>
+    <>
+      <Lamp />
+      <main className="container mx-auto sm:pt-10">
+        <Subscription />
+      </main>
+      <FloatingDock />
+    </>
   )
 }
-
-export default Home
