@@ -6,6 +6,8 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/db/supabase/server'
 
 export async function login(formData: FormData) {
+  'use server'
+
   const supabase = await createClient()
   const data = {
     email: formData.get('email') as string,
@@ -13,9 +15,12 @@ export async function login(formData: FormData) {
   }
 
   const { error } = await supabase.auth.signInWithPassword(data)
+
   if (error) {
-    console.error(error)
-    return
+    return {
+      success: false,
+      error: error.message
+    }
   }
 
   revalidatePath('/', 'layout')

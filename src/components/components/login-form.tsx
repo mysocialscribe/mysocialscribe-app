@@ -1,10 +1,8 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { FaGoogle } from 'react-icons/fa'
-import { LuGithub } from 'react-icons/lu'
 
 import { loginSchema } from '@/types/schema/auth.schema'
 import { LoginFormData } from '@/types/AuthType'
@@ -20,13 +18,28 @@ type LoginFormProps = {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ onSignupClick }) => {
+  const [serverError, setServerError] = useState<string | null>(null)
+
   const {
     control,
+    handleSubmit,
     formState: { errors, isValid },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     mode: 'onChange',
   })
+
+  const onSubmit = async (data: LoginFormData) => {
+    setServerError(null)
+    const formData = new FormData()
+    formData.append('email', data.email)
+    formData.append('password', data.password)
+
+    const result = await login(formData)
+    if (result && !result.success) {
+      setServerError(result.error || 'Login failed')
+    }
+  }
 
   return (
     <>
@@ -38,7 +51,10 @@ const LoginForm: FC<LoginFormProps> = ({ onSignupClick }) => {
       </DialogTitle>
 
       <CardContent>
-        <form className="space-y-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-3"
+        >
           {/* Email Input */}
           <div className="group relative">
             <label
@@ -90,30 +106,15 @@ const LoginForm: FC<LoginFormProps> = ({ onSignupClick }) => {
             )}
           </div>
 
+          {serverError && <div className="text-sm text-red-500">{serverError}</div>}
+
           {/* Submit Button */}
           <Button
             type="submit"
             className="w-full"
             disabled={!isValid}
-            formAction={login}
           >
             Login
-          </Button>
-          <Button
-            variant="outline"
-            type="button"
-            className="w-full"
-          >
-            <FaGoogle />
-            <span>Login with Google</span>
-          </Button>
-          <Button
-            variant="outline"
-            type="button"
-            className="w-full"
-          >
-            <LuGithub />
-            <span>Login with Github</span>
           </Button>
 
           {/* Switch to Signup */}
