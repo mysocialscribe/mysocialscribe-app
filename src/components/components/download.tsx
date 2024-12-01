@@ -10,10 +10,10 @@ const Download = () => {
   const { downloading, downloadTwitterSpaces, error } = useDownload()
 
   return (
-    <div className="z-50 flex max-w-md flex-col gap-1 pb-10">
-      <div className="flex h-full items-center gap-3">
+    <div className="z-50 flex w-full max-w-md flex-col gap-1 px-4 pb-10 md:px-0">
+      <div className="flex h-full w-full flex-col items-center gap-3 md:flex-row">
         <Input
-          className="inline-block h-12 w-96 rounded-xl text-lg opacity-100 dark:bg-zinc-950"
+          className="h-12 w-full rounded-xl text-lg opacity-100 dark:bg-zinc-950 md:w-96"
           placeholder="input your twitter space link"
           onKeyDown={(e) => {
             if (e.key === 'Enter') downloadTwitterSpaces(e.currentTarget.value)
@@ -21,7 +21,7 @@ const Download = () => {
         />
 
         <Button
-          className="h-full rounded-xl text-sm"
+          className="h-12 w-full rounded-xl text-sm md:w-fit"
           size="sm"
           disabled={downloading}
           onClick={() => {

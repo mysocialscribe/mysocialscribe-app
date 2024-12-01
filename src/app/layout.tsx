@@ -35,7 +35,7 @@ export default function RootLayout({
         <HeadMetadata />
       </head>
 
-      <body className={clx('flex h-svh flex-col bg-zinc-50 dark:bg-zinc-950', lato.className)}>
+      <body className={clx('flex min-h-svh flex-col bg-zinc-50 dark:bg-zinc-950', lato.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -47,7 +47,9 @@ export default function RootLayout({
           <Footer />
 
           <DotPattern
-            className={cn('[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]')}
+            className={cn(
+              '[mask-image:radial-gradient(250px_circle_at_center,white,transparent)] sm:[mask-image:radial-gradient(400px_circle_at_center,white,transparent)] md:[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]'
+            )}
           />
           <GoogleAnalytics gaId={gaId} />
         </ThemeProvider>

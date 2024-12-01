@@ -3,7 +3,7 @@ import { LINKS } from '@/constants/LINKS'
 
 const Footer = () => {
   return (
-    <footer className="container mx-auto flex w-full max-w-3xl items-center justify-between py-6">
+    <footer className="container mx-auto flex w-full max-w-3xl flex-col-reverse items-center justify-between gap-4 px-4 py-6 md:flex-row md:px-0">
       <div className="flex gap-2 text-sm">
         <p>© {new Date().getFullYear()} mysocialscribe</p>
         <span>-</span>

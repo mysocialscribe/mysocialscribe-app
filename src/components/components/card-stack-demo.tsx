@@ -1,10 +1,11 @@
 'use client'
-import { CardStack } from '../ui/card-stack'
+
+import { CardStack } from '@/components/ui/card-stack'
 import { cn } from '@/lib/utils'
 
 export function CardStackDemo() {
   return (
-    <div className="flex h-[20rem] w-full items-center justify-center">
+    <div className="flex h-[12rem] md:h-[15rem] w-full items-center justify-center">
       <CardStack items={CARDS} />
     </div>
   )
