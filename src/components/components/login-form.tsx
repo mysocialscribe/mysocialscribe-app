@@ -4,17 +4,15 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { FaGoogle } from 'react-icons/fa'
+import { LuGithub } from 'react-icons/lu'
+
+import { loginSchema } from '@/types/schema/auth.schema'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { FaGoogle } from 'react-icons/fa'
-import { LuGithub } from 'react-icons/lu'
-
-const loginSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(1, 'Password is required'),
-})
+import { DialogTitle } from '@/components/ui/dialog'
 
 type LoginFormData = z.infer<typeof loginSchema>
 
@@ -40,10 +38,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSignupClick }) => {
 
   return (
     <>
-      <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
-        <CardDescription>Enter your email below to login</CardDescription>
-      </CardHeader>
+      <DialogTitle>
+        <CardHeader>
+          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardDescription>Enter your email below to login</CardDescription>
+        </CardHeader>
+      </DialogTitle>
 
       <CardContent>
         <form
@@ -68,6 +68,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSignupClick }) => {
                   type="email"
                   className="h-10 bg-transparent"
                   aria-invalid={!!errors.email}
+                  autoComplete="off"
                 />
               )}
             />

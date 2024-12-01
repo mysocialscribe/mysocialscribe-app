@@ -9,6 +9,7 @@ import { signupSchema } from '@/types/schema/auth.schema'
 
 import { Button } from '@/components/ui/button'
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { DialogTitle } from '@/components/ui/dialog'
 
 type SignupFormData = z.infer<typeof signupSchema>
 
@@ -71,10 +72,12 @@ const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
 
   return (
     <>
-      <CardHeader>
-        <CardTitle className="text-2xl">Sign up</CardTitle>
-        <CardDescription>Enter your email below to sign up</CardDescription>
-      </CardHeader>
+      <DialogTitle>
+        <CardHeader>
+          <CardTitle className="text-2xl">Sign up</CardTitle>
+          <CardDescription>Enter your email below to sign up</CardDescription>
+        </CardHeader>
+      </DialogTitle>
 
       <CardContent>
         <form
@@ -99,6 +102,7 @@ const SignUpForm: FC<SignupFormProps> = ({ onLoginClick }) => {
                   type="email"
                   className="h-10 bg-transparent"
                   aria-invalid={!!errors.email}
+                  autoComplete="off"
                 />
               )}
             />
