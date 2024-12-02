@@ -9,7 +9,7 @@ SUPABASE_ANON_KEY="${SUPABASE_ANON_KEY:-}"
 GA_MEASUREMENT_ID="${GA_MEASUREMENT_ID:-}"
 
 # Script Vars
-REPO_URL="https://github.com/mysocialscribe/application.git"
+REPO_URL="https://github.com/mysocialscribe/mysocialscribe-app"
 APP_DIR=~/myapp
 
 # Exit on any error
@@ -17,6 +17,10 @@ set -e
 
 # Update package list and upgrade existing packages
 sudo apt update && sudo apt upgrade -y
+
+# Install yt-dlp
+pip install ytdlp
+
 
 # Install Docker
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
