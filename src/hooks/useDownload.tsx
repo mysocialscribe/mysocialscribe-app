@@ -7,7 +7,7 @@ type UseDownloadType = {
   downloadTwitterSpaces: (url: string) => Promise<void>
 }
 
-const useDownload = (): UseDownloadType => {
+export const useDownload = (): UseDownloadType => {
   const [downloading, setDownloading] = useState(false)
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState<string | null>(null)
@@ -49,13 +49,15 @@ const useDownload = (): UseDownloadType => {
       while (true) {
         const { done, value } = await reader.read()
 
-        if (done) break
+        if (done) {
+          setProgress(100)
+          break
+        }
 
         if (value) {
           chunks.push(value)
           receivedLength += value.length
 
-          // Ensure progress is calculated safely
           const progressValue =
             contentLength > 0
               ? Math.min(Math.round((receivedLength / contentLength) * 100), 100)
@@ -81,10 +83,9 @@ const useDownload = (): UseDownloadType => {
     } finally {
       setDownloading(false)
       setProgress(0)
+      setError(null)
     }
   }
 
   return { downloading, progress, error, downloadTwitterSpaces }
 }
-
-export default useDownload

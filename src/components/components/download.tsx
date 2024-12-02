@@ -3,7 +3,7 @@
 import { LoaderCircle } from 'lucide-react'
 import { User } from '@supabase/auth-js'
 
-import useDownload from '@/hooks/useDownload'
+import { useDownload } from '@/hooks/useDownload'
 import { useLoginDialog } from '@/providers/login-dialog-provider'
 
 import { Input } from '@/components/ui/input'
@@ -27,30 +27,35 @@ const Download = ({ user }: { user: User | null }) => {
 
   return (
     <div className="z-50 flex w-full max-w-md flex-col gap-1 space-y-1 px-4 pb-10 md:px-0">
-      <div className="flex h-full w-full flex-col items-center gap-3 md:flex-row">
+      <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row">
         <Input
-          className="h-12 w-full rounded-xl text-lg opacity-100 dark:bg-zinc-950 md:w-96"
+          className="h-10 w-full rounded-xl text-base opacity-100 dark:bg-zinc-950 md:h-12 md:w-96 md:text-lg"
           placeholder="input your twitter space link"
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleDownload(e.currentTarget.value)
           }}
         />
 
-        <Button
-          className="h-12 w-full min-w-12 rounded-xl text-sm md:w-fit"
-          size="sm"
-          disabled={downloading}
-          onClick={() => {
-            const input = document.querySelector('input') as HTMLInputElement
-            handleDownload(input.value)
-          }}
-        >
-          {downloading ? (
-            <LoaderCircle className="animate-spin text-white duration-700 dark:text-black" />
-          ) : (
-            <span>Download</span>
-          )}
-        </Button>
+        <div className="flex w-full items-center space-x-2 md:w-fit">
+          <Button
+            className="h-10 w-full min-w-12 rounded-xl text-sm md:h-12 md:w-fit"
+            size="sm"
+            disabled={downloading}
+            onClick={() => {
+              const input = document.querySelector('input') as HTMLInputElement
+              handleDownload(input.value)
+            }}
+          >
+            {downloading ? (
+              <>
+                <span className="block md:hidden">Downloading...</span>
+                <LoaderCircle className="animate-spin text-white duration-700 dark:text-black" />
+              </>
+            ) : (
+              <span>Download</span>
+            )}
+          </Button>
+        </div>
       </div>
 
       {error && (
