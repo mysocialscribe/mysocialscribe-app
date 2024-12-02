@@ -2,17 +2,20 @@ import { useState } from 'react'
 
 type UseDownloadType = {
   downloading: boolean
+  progress: number
   error: string | null
   downloadTwitterSpaces: (url: string) => Promise<void>
 }
 
 const useDownload = (): UseDownloadType => {
   const [downloading, setDownloading] = useState(false)
+  const [progress, setProgress] = useState(0)
   const [error, setError] = useState<string | null>(null)
 
   const downloadTwitterSpaces = async (url: string): Promise<void> => {
     try {
       setDownloading(true)
+      setProgress(0)
       setError(null)
 
       const twitterSpacesRegex = /^https?:\/\/(x|twitter)\.com\/[^/]+\/(status|spaces)\/\d+/
@@ -33,11 +36,38 @@ const useDownload = (): UseDownloadType => {
         throw new Error(errorData.error || 'Download failed')
       }
 
-      // Stream the download directly to the user
-      const blob = await response.blob()
+      const contentLength = parseInt(response.headers.get('Content-Length') || '0', 10)
+      const reader = response.body?.getReader()
+
+      if (!reader) {
+        throw new Error('Unable to read response stream')
+      }
+
+      let receivedLength = 0
+      const chunks: Uint8Array[] = []
+
+      while (true) {
+        const { done, value } = await reader.read()
+
+        if (done) break
+
+        if (value) {
+          chunks.push(value)
+          receivedLength += value.length
+
+          // Ensure progress is calculated safely
+          const progressValue =
+            contentLength > 0
+              ? Math.min(Math.round((receivedLength / contentLength) * 100), 100)
+              : Math.min(Math.round(receivedLength / (1024 * 1024)), 100)
+
+          setProgress(progressValue)
+        }
+      }
+
+      const blob = new Blob(chunks)
       const downloadUrl = window.URL.createObjectURL(blob)
 
-      // Create a temporary anchor element to trigger download
       const link = document.createElement('a')
       link.href = downloadUrl
       link.download = 'twitter_spaces.mp3'
@@ -50,10 +80,11 @@ const useDownload = (): UseDownloadType => {
       setError(err instanceof Error ? err.message : 'An unexpected error occurred')
     } finally {
       setDownloading(false)
+      setProgress(0)
     }
   }
 
-  return { downloading, error, downloadTwitterSpaces }
+  return { downloading, progress, error, downloadTwitterSpaces }
 }
 
 export default useDownload

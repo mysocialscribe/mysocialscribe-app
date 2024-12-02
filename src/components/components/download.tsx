@@ -8,9 +8,10 @@ import { useLoginDialog } from '@/providers/login-dialog-provider'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
 
 const Download = ({ user }: { user: User | null }) => {
-  const { downloading, downloadTwitterSpaces, error } = useDownload()
+  const { downloading, downloadTwitterSpaces, error, progress } = useDownload()
   const { openLoginDialog } = useLoginDialog()
 
   const handleDownload = (url: string) => {
@@ -22,8 +23,10 @@ const Download = ({ user }: { user: User | null }) => {
     downloadTwitterSpaces(url)
   }
 
+  const isIndeterminateProgress = progress > 100
+
   return (
-    <div className="z-50 flex w-full max-w-md flex-col gap-1 px-4 pb-10 md:px-0">
+    <div className="z-50 flex w-full max-w-md flex-col gap-1 space-y-1 px-4 pb-10 md:px-0">
       <div className="flex h-full w-full flex-col items-center gap-3 md:flex-row">
         <Input
           className="h-12 w-full rounded-xl text-lg opacity-100 dark:bg-zinc-950 md:w-96"
@@ -34,7 +37,7 @@ const Download = ({ user }: { user: User | null }) => {
         />
 
         <Button
-          className="h-12 w-full rounded-xl text-sm md:w-fit"
+          className="h-12 w-full min-w-12 rounded-xl text-sm md:w-fit"
           size="sm"
           disabled={downloading}
           onClick={() => {
@@ -42,9 +45,10 @@ const Download = ({ user }: { user: User | null }) => {
             handleDownload(input.value)
           }}
         >
-          <span>{downloading ? 'Downloading' : 'Download'}</span>
-          {downloading && (
+          {downloading ? (
             <LoaderCircle className="animate-spin text-white duration-700 dark:text-black" />
+          ) : (
+            <span>Download</span>
           )}
         </Button>
       </div>
@@ -53,6 +57,16 @@ const Download = ({ user }: { user: User | null }) => {
         <p className="text-sm text-red-500 dark:text-red-400">
           Invalid Twitter Spaces or Tweet URL
         </p>
+      )}
+
+      {downloading && (
+        <div className="flex w-full items-center space-x-2">
+          <Progress
+            value={isIndeterminateProgress ? undefined : progress}
+            className="w-full"
+          />
+          {!isIndeterminateProgress && <span className="text-sm text-gray-500">{progress}%</span>}
+        </div>
       )}
     </div>
   )
