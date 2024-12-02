@@ -2,7 +2,7 @@ import clx from 'clsx'
 import { Lato } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-import ThemeProvider from '@/app/providers'
+import ThemeProvider from '@/providers/theme-providers'
 import HeadMetadata from '@/components/components/head-metadata'
 import DotPattern from '@/components/ui/dot-pattern'
 import Footer from '@/components/layout/footer'

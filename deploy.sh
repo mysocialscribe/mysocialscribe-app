@@ -6,6 +6,7 @@ EMAIL="mysocialscribe.info@gmail.com" # replace with your own
 PASS="${PASS:-}"  # Use empty string if not set
 SUPABASE_URL="${SUPABASE_URL:-}"
 SUPABASE_ANON_KEY="${SUPABASE_ANON_KEY:-}"
+GA_MEASUREMENT_ID="${GA_MEASUREMENT_ID:-}"
 
 # Script Vars
 REPO_URL="https://github.com/mysocialscribe/application.git"
@@ -56,6 +57,7 @@ DOMAIN_NAME=$DOMAIN_NAME
 PASS=$PASS
 SUPABASE_URL=$SUPABASE_URL
 SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID
 EOF
 
 # Stop any running containers before SSL certificate generation
