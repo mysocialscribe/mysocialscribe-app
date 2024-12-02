@@ -8,7 +8,7 @@ on:
 
 jobs:
   prettier:
-    name: Run Prettier
+    name: Run Prettier, Eslint and TS type checks
     runs-on: ubuntu-latest
 
     steps:
