@@ -1,11 +1,8 @@
+'use client'
+
 import { useState } from 'react'
 
-type UseDownloadType = {
-  downloading: boolean
-  progress: number
-  error: string | null
-  downloadTwitterSpaces: (url: string) => Promise<void>
-}
+import { UseDownloadType } from '@/types/UseDownloadType'
 
 export const useDownload = (): UseDownloadType => {
   const [downloading, setDownloading] = useState(false)

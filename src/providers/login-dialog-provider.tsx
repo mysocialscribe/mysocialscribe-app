@@ -1,16 +1,12 @@
 'use client'
 
-// Create a context to manage the dialog state globally
 import React, { createContext, useCallback, useContext, useState } from 'react'
+
+import { LoginDialogContextType } from '@/types/LoginDialogContextType'
+
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import SignupForm from '@/components/components/signup-form'
 import LoginForm from '@/components/components/login-form'
-
-interface LoginDialogContextType {
-  openLoginDialog: () => void
-  openSignupDialog: () => void
-  closeDialog: () => void
-}
 
 const LoginDialogContext = createContext<LoginDialogContextType | undefined>(undefined)
 
@@ -21,13 +17,13 @@ export const LoginDialogProvider: React.FC<{
   const [isLoginForm, setIsLoginForm] = useState(true)
 
   const openLoginDialog = useCallback(() => {
-    setIsLoginForm(true)
-    setIsOpen(true)
+    setIsLoginForm((prevState) => !prevState)
+    setIsOpen((prevState) => !prevState)
   }, [])
 
   const openSignupDialog = useCallback(() => {
-    setIsLoginForm(false)
-    setIsOpen(true)
+    setIsLoginForm((prevState) => !prevState)
+    setIsOpen((prevState) => !prevState)
   }, [])
 
   const closeDialog = useCallback(() => {
