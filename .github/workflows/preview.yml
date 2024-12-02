@@ -52,5 +52,5 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
           vercel-org-id: team_BkrdjcnjWbG3325UNzWhloSf
-          vercel-project-id: prj_gBZVJaFrMW6BOcujZ9mmoyEYpRG8
+          vercel-project-id: prj_4HEqgpLLQxPZ9cKoMDpn5It8wKqx
           working-directory: .
