@@ -1,12 +1,15 @@
 FROM node:alpine AS base
 
 # Install dependencies
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl python3 py3-pip ffmpeg
 
 # Install yt-dlp
 RUN mkdir -p ~/.local/bin && \
     curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o ~/.local/bin/yt-dlp && \
     chmod a+rx ~/.local/bin/yt-dlp
+
+# Add yt-dlp to PATH
+ENV PATH="/root/.local/bin:${PATH}"
 
 # Stage 1: Install dependencies
 FROM base AS deps
