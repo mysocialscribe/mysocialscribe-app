@@ -1,8 +1,9 @@
 FROM node:alpine AS base
 
 # Install yt-dlp
-RUN apk add --no-cache python3 py3-pip && \
-    pip3 install --no-cache-dir yt-dlp
+RUN mkdir -p ~/.local/bin && \
+    curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o ~/.local/bin/yt-dlp && \
+    chmod a+rx ~/.local/bin/yt-dlp
 
 # Stage 1: Install dependencies
 FROM base AS deps
