@@ -26,18 +26,6 @@ services:
     networks:
       - app_network
 
-  ytdlp:
-    build:
-      context: .
-      dockerfile: ./ytdlp/Dockerfile
-    volumes:
-      - ./downloads:/downloads
-    user: "1000:1000"
-    environment:
-      - TZ=UTC
-    networks:
-      - app_network
-
 networks:
   app_network:
     driver: bridge
