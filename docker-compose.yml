@@ -27,12 +27,14 @@ services:
       - app_network
 
   ytdlp:
-    image: ghcr.io/yt-dlp/yt-dlp:latest
+    build:
+      context: .
+      dockerfile: ./ytdlp/Dockerfile
     volumes:
       - ./downloads:/downloads
-    environment:
-      - TZ=Your/Timezone
     user: "1000:1000"
+    environment:
+      - TZ=UTC
 
 networks:
   app_network:
