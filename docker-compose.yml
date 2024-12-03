@@ -35,6 +35,8 @@ services:
     user: "1000:1000"
     environment:
       - TZ=UTC
+    networks:
+      - app_network
 
 networks:
   app_network:
