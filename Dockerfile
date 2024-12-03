@@ -15,7 +15,6 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY src/app/_templates ./src/app/_templates
 RUN npm run build
 
 # Stage 3: Production server
