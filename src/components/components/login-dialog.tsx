@@ -20,7 +20,7 @@ const LoginDialog = () => {
         <HoverBorderGradient
           containerClassName="rounded-xl"
           as="button"
-          className="flex items-center bg-white px-1 py-1 text-sm text-black dark:bg-black dark:text-white md:px-3"
+          className="flex items-center bg-white px-2 py-1 text-sm text-black dark:bg-black dark:text-white md:px-3"
         >
           Login
         </HoverBorderGradient>

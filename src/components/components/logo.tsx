@@ -15,11 +15,9 @@ const Logo = () => {
 
   if (!mounted) return <div />
 
-  const logoSrc = theme === 'dark' ? '/icon.png' : '/icon-black.png'
-
   return (
     <Image
-      src={logoSrc}
+      src={theme === 'dark' ? '/icon-white.png' : '/icon-black.png'}
       alt="mysocialscribe logo"
       width={100}
       height={100}
