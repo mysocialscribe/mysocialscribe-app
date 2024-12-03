@@ -1,5 +1,9 @@
 FROM node:alpine AS base
 
+# Install yt-dlp
+RUN apk add --no-cache python3 py3-pip && \
+    pip3 install --no-cache-dir yt-dlp
+
 # Stage 1: Install dependencies
 FROM base AS deps
 WORKDIR /app

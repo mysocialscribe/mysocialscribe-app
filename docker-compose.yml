@@ -26,14 +26,6 @@ services:
     networks:
       - app_network
 
-  ytdlp:
-    image: ghcr.io/yt-dlp/yt-dlp:latest
-    volumes:
-      - ./downloads:/downloads
-    environment:
-      - TZ=Your/Timezone
-    user: "1000:1000"
-
 networks:
   app_network:
     driver: bridge
