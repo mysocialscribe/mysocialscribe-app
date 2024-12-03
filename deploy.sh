@@ -41,9 +41,6 @@ log "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 check_command "System update"
 
-# Install yt-dlp
-sudo apt install yt-dlp -y
-
 # Install Docker if not present
 if ! command -v docker &> /dev/null; then
     log "Installing Docker..."
